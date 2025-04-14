@@ -67,6 +67,6 @@ docker-compose up --build
 I'm passionate about building fullstack systems with a focus on **clean architecture**, **monitoring**, and **devops-readiness**.  
 Currently diving deep into **Docker**, **System Design**, and **Cloud DevOps** to take my skills to the next level.
 
-Let’s connect on [LinkedIn](https://www.linkedin.com/in/yourprofile) or reach out via [email@example.com](mailto:email@example.com)!
+Let’s connect on [LinkedIn](https://www.linkedin.com/in/eric-fernandes-a1b7ba242/) or reach out via [ericfergoa@gmail.com](mailto:ericfergoa@gmail.com)!
 
 ---
