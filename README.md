@@ -1,5 +1,5 @@
 
-```markdown
+
 # 🔗 URL Shortener & Click Tracker – Fullstack Dockerized App
 
 A minimal yet production-ready **URL shortening application** with **click tracking**, built with:
