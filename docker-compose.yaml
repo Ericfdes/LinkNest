@@ -62,15 +62,48 @@ services:
     networks:
       - app-network
     healthcheck:
-      test: /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "${SA_PASSWORD}" -Q "SELECT 1" -b -o /dev/null
-      interval: 30s
+     ## test: /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "${SA_PASSWORD}" -Q "SELECT 1" -b -o /dev/null
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P '${SA_PASSWORD}' -Q \"SELECT 1\" -b -o /dev/null"]
+      interval: 10s
       timeout: 3s
       retries: 10
       start_period: 10s
 
+
+
+  grafana:
+    container_name: LinkNest.grafana
+    image: grafana/grafana
+    ports:
+      - "3002:3000"  # Host 3002 → Container 3000 (Grafana's default UI port)
+    volumes:
+      - grafana_data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    depends_on:
+      - prometheus
+    networks:
+      - app-network
+
+  prometheus:
+    container_name: LinkNest.prometheus
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./Backend/Backend/prom/prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+    networks:
+      - app-network
+
+
 #  Shared named volumes (DB persistence)
 volumes:
   sql_data:
+  grafana_data:
+
 
 #  Shared network so containers can reach each other by name
 networks:

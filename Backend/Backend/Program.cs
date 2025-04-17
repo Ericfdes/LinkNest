@@ -5,17 +5,20 @@ using Microsoft.EntityFrameworkCore;
 using Hangfire;
 using Hangfire.SqlServer;
 using Backend.Jobs;
+using Prometheus;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+var CON_STR = "DockerCon";
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options => 
-        options.UseSqlServer(builder.Configuration.GetConnectionString("DockerCon"))
+        options.UseSqlServer(builder.Configuration.GetConnectionString(CON_STR))
         
         );
 
@@ -52,7 +55,7 @@ if (hangfireEnabled)
         config.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
               .UseSimpleAssemblyNameTypeSerializer()
               .UseRecommendedSerializerSettings()
-              .UseSqlServerStorage(builder.Configuration.GetConnectionString("Backend"))
+              .UseSqlServerStorage(builder.Configuration.GetConnectionString(CON_STR))
     );
 
     builder.Services.AddHangfireServer();
@@ -62,6 +65,27 @@ if (hangfireEnabled)
 
 
 var app = builder.Build();
+
+
+//PROM
+app.UseHttpMetrics();// Collects metrics automatically\
+//app.MapMetrics();//Exposes them\  // Okay this is the wrong way to expose em below is th eccorrect way
+app.MapGet("/", () => "hello!");
+
+
+app.UseCors("AllowFrontend");
+
+// This maps the /metrics endpoint FOR DOCKER works fine in local development
+app.UseRouting();
+app.UseAuthorization();
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+    endpoints.MapMetrics(); // <--- this is required for prom
+});
+
+
 
 
 //FOR DOCKER
@@ -83,7 +107,6 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-app.UseCors("AllowFrontend");
 
 
 
@@ -97,7 +120,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+
 
 app.MapControllers();
 

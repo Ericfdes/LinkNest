@@ -1,0 +1,8 @@
+﻿global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: 'dotnet-app'
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['backend:3000'] ## backend the name in docker-compose.yml

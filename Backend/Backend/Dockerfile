@@ -1,4 +1,4 @@
-﻿# 1️ Base runtime image: only contains .NET runtime (no SDK)
+﻿#  Base runtime image: only contains .NET runtime (no SDK)
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 
 # Set working directory
@@ -8,7 +8,7 @@ WORKDIR /app
 EXPOSE 3000    
 EXPOSE 3001    
 
-# 2️ Build image: has .NET SDK to compile the project
+# 2 Build image: has .NET SDK to compile the project
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Development
 
