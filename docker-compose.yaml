@@ -70,21 +70,21 @@ services:
       start_period: 10s
 
 
-
-  grafana:
-    container_name: LinkNest.grafana
-    image: grafana/grafana
-    ports:
-      - "3002:3000"  # Host 3002 → Container 3000 (Grafana's default UI port)
-    volumes:
-      - grafana_data:/var/lib/grafana
-    environment:
-      - GF_SECURITY_ADMIN_USER=admin
-      - GF_SECURITY_ADMIN_PASSWORD=admin
-    depends_on:
-      - prometheus
-    networks:
-      - app-network
+# NO SPACE T_T
+  # grafana:
+  #   container_name: LinkNest.grafana
+  #   image: grafana/grafana
+  #   ports:
+  #     - "3002:3000"  # Host 3002 → Container 3000 (Grafana's default UI port)
+  #   volumes:
+  #     - grafana_data:/var/lib/grafana
+  #   environment:
+  #     - GF_SECURITY_ADMIN_USER=admin
+  #     - GF_SECURITY_ADMIN_PASSWORD=admin
+  #   depends_on:
+  #     - prometheus
+  #   networks:
+  #     - app-network 
 
   prometheus:
     container_name: LinkNest.prometheus
