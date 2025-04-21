@@ -86,23 +86,23 @@ services:
   #   networks:
   #     - app-network 
 
-  prometheus:
-    container_name: LinkNest.prometheus
-    image: prom/prometheus
-    ports:
-      - "9090:9090"
-    volumes:
-      - ./Backend/Backend/prom/prometheus.yml:/etc/prometheus/prometheus.yml
-    command:
-      - --config.file=/etc/prometheus/prometheus.yml
-    networks:
-      - app-network
+  # prometheus:
+  #   container_name: LinkNest.prometheus
+  #   image: prom/prometheus
+  #   ports:
+  #     - "9090:9090"
+  #   volumes:
+  #     - ./Backend/Backend/prom/prometheus.yml:/etc/prometheus/prometheus.yml
+  #   command:
+  #     - --config.file=/etc/prometheus/prometheus.yml
+  #   networks:
+  #     - app-network
 
 
 #  Shared named volumes (DB persistence)
 volumes:
   sql_data:
-  grafana_data:
+  # grafana_data:
 
 
 #  Shared network so containers can reach each other by name
