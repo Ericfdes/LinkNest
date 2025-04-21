@@ -40,8 +40,8 @@ A minimal yet production-ready **URL shortening application** with **click track
 
 ```bash
 # Clone the repo
-git clone https://github.com/yourusername/url-shortener-app.git
-cd url-shortener-app
+git clone https://github.com/Ericfdes/LinkNest.git
+cd LinkNest
 
 # Run with Docker Compose
 docker-compose up --build
