@@ -18,7 +18,7 @@ A minimal yet production-ready **URL shortening application** with **click track
 - 📈 Track each link’s metadata (click count, last accessed time, IP history).
 - 🧠 Schema-first backend design using Entity Framework Core and SQL Server.
 - 🛠️ Containerized with Docker for backend, frontend, and database layers.
-- 👁️ Coming Soon: Click analytics dashboard with Grafana + Prometheus integration.
+- 👁️ Monitoring: Click analytics dashboard with Grafana + Prometheus integration.
 - 🚀 Cloud-ready and CI/CD-friendly architecture.
 
 ---
@@ -31,7 +31,7 @@ A minimal yet production-ready **URL shortening application** with **click track
 | Backend      | .NET 8 (ASP.NET Core)           |
 | Database     | MS SQL Server                   |
 | Containerization | Docker & Docker Compose    |
-| Monitoring   | Prometheus + Grafana (Planned)  |
+| Monitoring   | Prometheus + Grafana            |
 | Deployment   | Cloud (AWS / Azure / Railway – In Progress) |
 
 ---
