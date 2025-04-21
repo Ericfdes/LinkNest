@@ -2,7 +2,7 @@ import axios from "axios";
 import { AxiosError } from "axios";
 //const BASE_API_URL = 'https://localhost:7005/'
 //const BASE_API_URL = 'http://localhost:5250/'
-const BASE_API_URL = 'https://localhost:3001/'; //docker url
+const BASE_API_URL = import.meta.env.VITE_API_URL; //docker url
 
 
 const apiClient = axios.create({
