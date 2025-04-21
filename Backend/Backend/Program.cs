@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-var CON_STR = "DockerCon";
+var CON_STR = "DefaultConnection";
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -28,7 +28,7 @@ builder.Services.AddScoped<IUrlService, UrlService>();//UrlHashing
 builder.Services.AddScoped<IClickTrackingService, ClickTrackingService>();//CLick Tracking
 
 
-var ORIGIN_URL = "http://localhost:5173";
+var ORIGIN_URL = "https://linknest.hopto.org";
 
 //cors
 builder.Services.AddCors(options =>

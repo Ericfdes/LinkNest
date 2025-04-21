@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
             private readonly AppDbContext _context;
 
             //private readonly string _baseUrl = "https://localhost:7005/u/"; 
-            private readonly string _baseUrl = "https://localhost:3001/u/"; //for docker link
+            private readonly string _baseUrl = "https://linknest.hopto.org/u/"; //aws
 
 
             //Contructor Injection
